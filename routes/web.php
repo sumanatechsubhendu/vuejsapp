@@ -49,9 +49,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [IndexController::class, 'index']);
-Route::get('/hello', [IndexController::class, 'show'])
-  ->middleware('auth');
 
 Route::resource('listing', ListingController::class)
   ->only(['index', 'show']);
@@ -68,25 +65,6 @@ Route::put(
   'notification/{notification}/seen',
   NotificationSeenController::class
 )->middleware('auth')->name('notification.seen');
-
-// Route::get('login', [AuthController::class, 'create'])
-//   ->name('login');
-// Route::post('login', [AuthController::class, 'store'])
-//   ->name('login.store');
-// Route::delete('logout', [AuthController::class, 'destroy'])
-//   ->name('logout');
-
-// Route::get('/email/verify', function () {
-//   return inertia('Auth/VerifyEmail');
-// })
-//   ->middleware('auth')->name('verification.notice');
-
-// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//   $request->fulfill();
-
-//   return redirect()->route('listing.index')
-//     ->with('success', 'Email was verified!');
-// })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
   $request->user()->sendEmailVerificationNotification();

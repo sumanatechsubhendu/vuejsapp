@@ -1,4 +1,6 @@
 <template>
+    <Head title="Dashboard" />
+    <AuthenticatedLayout>
   <form @submit.prevent="create">
     <div class="grid grid-cols-6 gap-4">
       <div class="col-span-2">
@@ -70,9 +72,12 @@
       </div>
     </div>
   </form>
+</AuthenticatedLayout>
 </template>
 
 <script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head } from '@inertiajs/vue3';
 import { useForm } from '@inertiajs/inertia-vue3'
 
 const form = useForm({

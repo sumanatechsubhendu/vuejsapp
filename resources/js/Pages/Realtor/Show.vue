@@ -1,6 +1,6 @@
 <template>
   <div class="mb-4">
-    <Link 
+    <Link
       :href="route('realtor.listing.index')"
     >
       ← Go back to Listings
@@ -16,7 +16,7 @@
 
     <div v-else class="md:col-span-7 flex flex-col gap-4">
       <Offer
-        v-for="offer in listing.offers" 
+        v-for="offer in listing.offers"
         :key="offer.id"
         :offer="offer"
         :listing-price="listing.price"

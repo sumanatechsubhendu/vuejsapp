@@ -10,7 +10,7 @@ class RealtorListingController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Listing::class, 'listing');
+        //$this->authorizeResource(Listing::class, 'listing');
     }
 
     public function index(Request $request)
@@ -62,6 +62,7 @@ class RealtorListingController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->all());
         $request->user()->listings()->create(
             $request->validate([
                 'beds' => 'required|integer|min:0|max:20',
